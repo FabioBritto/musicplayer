@@ -2,6 +2,10 @@
 	font-size: 10px;
 }
 
+#h4error {
+	color: red;
+}
+
 body {
 	background: #000000;
 	color: #FFFFFF;
