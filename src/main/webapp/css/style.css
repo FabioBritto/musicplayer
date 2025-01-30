@@ -1,1 +1,18 @@
-# Empty CSS file for your own CSS
+#creditos {
+	font-size: 10px;
+}
+
+body {
+	background: #000000;
+	color: #FFFFFF;
+}
+
+h3 {
+	color: #638C6D;
+	padding-top: 1%;
+}
+
+.btn {
+	background: #638C6D;
+}
+

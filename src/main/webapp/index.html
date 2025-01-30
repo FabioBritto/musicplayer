@@ -19,14 +19,19 @@
 	  <div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-				<p align="right"> Developed by Fabio Britto</p>
+				<p id="creditos" align="right"> Developed by Fabio Britto</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12" align="center">
+				<img src="images/logo-fabio-britto.jpg"  width="75%">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<h3 class="text-center">
-					h3. Lorem ipsum dolor sit amet.
-				</h3>
+					<h3 class="text-center">
+						Music Player - Sua Playlist na WEB
+					</h3>
 			</div>
 		</div>
 		<div class="row">
@@ -35,40 +40,25 @@
 					<div class="col-md-2">
 					</div>
 					<div class="col-md-8">
-						<form role="form">
+						<form role="form" action="loginservlet" method="POST">
 							<div class="form-group">
 								 
 								<label for="exampleInputEmail1">
-									Email address
+									Seu Email
 								</label>
-								<input type="email" class="form-control" id="exampleInputEmail1" />
+								<input type="email" class="form-control" id="exampleInputEmail1" name="txtEmail"/>
 							</div>
 							<div class="form-group">
 								 
 								<label for="exampleInputPassword1">
-									Password
+									Sua Senha
 								</label>
-								<input type="password" class="form-control" id="exampleInputPassword1" />
+								<input type="password" class="form-control" id="exampleInputPassword1" name="txtSenha"/>
 							</div>
-							<div class="form-group">
-								 
-								<label for="exampleInputFile">
-									File input
-								</label>
-								<input type="file" class="form-control-file" id="exampleInputFile" />
-								<p class="help-block">
-									Example block-level help text here.
-								</p>
-							</div>
-							<div class="checkbox">
-								 
-								<label>
-									<input type="checkbox" /> Check me out
-								</label>
-							</div> 
 							<button type="submit" class="btn btn-primary">
-								Submit
+								Entrar
 							</button>
+							Não tem conta? <a href="novousuario">CLIQUE AQUI</a>
 						</form>
 					</div>
 					<div class="col-md-2">
