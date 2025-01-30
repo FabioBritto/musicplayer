@@ -1,5 +1,6 @@
 package br.com.fabiobritto.musicplayer.controller;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,8 +24,19 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		System.out.println("RECEBIDO EMAIL: " + request.getParameter("txtEmail"));
-		System.out.println("RECEBIDO SENHA: " + request.getParameter("txtSenha"));
+		String email = request.getParameter("txtEmail");
+		String senha = request.getParameter("txtSenha");
+		String pagina;
+		
+		if(email.equals("fabio.tritono@gmail.com") && senha.equals("fabiobritto")) {
+			pagina = "/myaccount.jsp";
+		}
+		else {
+			pagina = "/error.jsp";
+			request.setAttribute("erroSTR", "Email / Senha não encontrados!");
+		}
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+		dispatcher.forward(request, response);
 		
 	}
 
