@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.fabiobritto.musicplayer.dao.DataSource;
 import br.com.fabiobritto.musicplayer.dao.UsuarioDAO;
+import br.com.fabiobritto.musicplayer.model.Usuario;
 
 @WebServlet("/loginservlet")
 public class LoginServlet extends HttpServlet {
@@ -30,25 +32,33 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String email = request.getParameter("txtEmail");
 		String senha = request.getParameter("txtSenha");
-		String pagina;
+		Usuario usuarioIncompleto = new Usuario();
+		usuarioIncompleto.setEmail(email);
+		usuarioIncompleto.setSenha(senha);
 		
-		List<Object> resultado;
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		resultado = usuarioDAO.read(null);
+		DataSource ds;
 		
-		if(resultado.size() > 0) {
+		String pagina ="/error.jsp";
+		
+		try {
+			ds = new DataSource();
+			UsuarioDAO usuarioDAO = new UsuarioDAO(ds);
+			List<Object> resultado = usuarioDAO.read(usuarioIncompleto);
 			
-			request.getSession().setAttribute("Usuario", resultado.get(0));
-			
-			pagina = "/myaccount.jsp";
+			if(resultado != null && resultado.size() > 0) {
+				request.getSession().setAttribute("Usuario", resultado.get(0));
+				pagina = "/myaccount.jsp";
+			}
+			else {
+				request.setAttribute("erroSTR", "Usuario / Senha Inválidos!");
+			}
+			ds.getConnection().close();
 		}
-		else {
-			pagina = "/error.jsp";
-			request.setAttribute("erroSTR", "Email / Senha não encontrados!");
+		catch(Exception e) {
+			request.setAttribute("erroSTR", "Erro ao recuperar!");
 		}
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
 		dispatcher.forward(request, response);
-		
 	}
-
 }
