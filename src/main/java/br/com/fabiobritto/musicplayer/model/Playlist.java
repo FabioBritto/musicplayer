@@ -1,6 +1,7 @@
 package br.com.fabiobritto.musicplayer.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -41,8 +42,8 @@ public class Playlist implements Serializable {
 		return musicas;
 	}
 	
-	public void setMusicas(Musica musica) {
-		musicas.add(musica);
+	public void setMusicas(List<Musica> musicas) {
+		this.musicas = musicas;
 	}
 
 	@Override

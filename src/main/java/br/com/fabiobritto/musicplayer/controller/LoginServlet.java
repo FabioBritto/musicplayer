@@ -1,12 +1,16 @@
 package br.com.fabiobritto.musicplayer.controller;
 
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import br.com.fabiobritto.musicplayer.dao.UsuarioDAO;
 
 @WebServlet("/loginservlet")
 public class LoginServlet extends HttpServlet {
@@ -28,7 +32,14 @@ public class LoginServlet extends HttpServlet {
 		String senha = request.getParameter("txtSenha");
 		String pagina;
 		
-		if(email.equals("fabio.tritono@gmail.com") && senha.equals("fabiobritto")) {
+		List<Object> resultado;
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		resultado = usuarioDAO.read(null);
+		
+		if(resultado.size() > 0) {
+			
+			request.getSession().setAttribute("Usuario", resultado.get(0));
+			
 			pagina = "/myaccount.jsp";
 		}
 		else {

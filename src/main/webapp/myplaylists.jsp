@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <jsp:useBean id="Usuario" type="br.com.fabiobritto.musicplayer.model.Usuario" scope="session"/>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -39,20 +40,20 @@
 			</div>
 		</div>
 
-		<div class="row" id="conteudo">
+		<div class="row" id="menu">
 			<div class="col-md-2">
 			&nbsp;
 			</div>
 			<div class="col-md-8">
 				<ul class="nav">
-					<li class="nav-item ml-md-auto" >
-						<a class="nav-link" href="#">Nova Playlist</a>
+					<li class="nav-item" >
+						<a class="nav-link" href="#">Nova Playlist              </a>
 					</li>
-					<li class="nav-item ml-md-auto">
-						<a class="nav-link" href="./myplaylists">Minhas Playlists</a>
+					<li class="nav-item">
+						<a class="nav-link" href="./myplaylists">Minhas Playlists              </a>
 					</li>
-					<li class="nav-item ml-md-auto">
-						<a class="nav-link" href="#">Upload de Músicas</a>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Upload de Músicas              </a>
 					</li>
 				</ul>
 			</div>
@@ -60,6 +61,22 @@
 				&nbsp;
 			</div>
 		</div>
+		
+		<c:forEach var="playlist" items="${Usuario.playlists}">
+			<!-- Várias Iterações -->
+			<div class="row">
+				<div class="col-md-2"> &nbsp; </div>
+				<div class="col-md-2">
+					<strong>${playlist.titulo}</strong><br/>
+					<ul>
+						<c:forEach var="musica" items="${playlist.musicas}">
+							<li>${musica.titulo} - ${musica.artista}</li>
+						</c:forEach>
+					</ul>
+				</div>
+				<div class="col-md-2"> &nbsp; </div>
+			</div>
+		</c:forEach>
 	</div>
 
 
