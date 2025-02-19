@@ -21,7 +21,6 @@ public class DataSource {
 			username = "musicplayer";
 			password = "f@bi0";
 			String URL = "jdbc:mysql://" + hostname + ":3306/" + database;
-			System.out.println(URL);
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 			connection = DriverManager.getConnection(URL, username, password);
 			System.out.println("DataSource Connected");
