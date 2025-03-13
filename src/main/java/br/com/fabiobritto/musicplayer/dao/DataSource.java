@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import com.mysql.cj.jdbc.Driver;
-
 public class DataSource {
 
 	private String hostname;
@@ -23,7 +21,6 @@ public class DataSource {
 			String URL = "jdbc:mysql://" + hostname + ":3306/" + database;
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 			connection = DriverManager.getConnection(URL, username, password);
-			System.out.println("DataSource Connected");
 		}
 		catch(SQLException e) {
 			System.out.println("ERRO AO CONECTAR SQL: " + e.getMessage());

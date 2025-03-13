@@ -43,18 +43,17 @@
 			<div class="col-md-2">
 			&nbsp;
 			</div>
-			<div class="col-md-8">
-				<ul class="nav">
-					<li class="nav-item ml-md-auto" >
-						<a class="nav-link" href="#">Nova Playlist</a>
-					</li>
-					<li class="nav-item ml-md-auto">
-						<a class="nav-link" href="./myplaylists">Minhas Playlists</a>
-					</li>
-					<li class="nav-item ml-md-auto">
-						<a class="nav-link" href="#">Upload de Músicas</a>
-					</li>
-				</ul>
+			<div class="col-md-2 botao">
+				<span class="text-center"> <a href="novamusica">Upload Música</a></span>
+			</div>
+			<div class="col-md-2 botao">
+				<span class="text-center"> <a href="playlists">Minhas Playlists</a></span>
+			</div>
+			<div class="col-md-2 botao">
+				<span class="text-center"> <a href="novaplaylist">Nova Playlist</a></span>
+			</div>
+			<div class="col-md-2 botao">
+				<span class="text-center"> <a href="logout">Logout</a></span>
 			</div>
 			<div class="col-md-2">
 				&nbsp;

@@ -1,7 +1,6 @@
 package br.com.fabiobritto.musicplayer.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -89,6 +88,6 @@ public class Usuario implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nomeUsuario=" + nomeUsuario + ", email=" + email + "]";
+		return "Usuario [id=" + id + ", nomeUsuario=" + nomeUsuario + ", email=" + email + ", senha=" + senha + "]";
 	}
 }

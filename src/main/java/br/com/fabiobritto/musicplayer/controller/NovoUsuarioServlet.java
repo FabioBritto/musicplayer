@@ -15,23 +15,10 @@ public class NovoUsuarioServlet extends HttpServlet {
 
     public NovoUsuarioServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/novousuario.jsp");
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/novousuario.jsp");
-		System.out.println("Estou no NovoUsuarioServlet");
 		dispatcher.forward(request, response);
-		
-		//response.sendRedirect(request.getContextPath() + "/novousuario.jsp");
-	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/novousuario.jsp");
-		System.out.println("Estou no NovoUsuarioServlet");
-		dispatcher.forward(request, response);
-		
-		//response.sendRedirect(request.getContextPath() + "/novousuario.jsp");
 	}
 }

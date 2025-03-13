@@ -21,14 +21,13 @@ public class UsuarioDAO implements GenericDAO {
 		try {
 			if(o instanceof Usuario) {
 				Usuario usuario = (Usuario)o;
-				String SQL = "INSERT INTO tbUsuario VALUES (null, ?, ?, ?)";
+				String SQL = "INSERT INTO tbusuario VALUES (null, ?, ?, ?)";
 				PreparedStatement st = dataSource.getConnection().prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-				st.setString(2, usuario.getNomeUsuario());
-				st.setString(3, usuario.getEmail());
-				st.setString(4, usuario.getSenha());
+				st.setString(1, usuario.getNomeUsuario());
+				st.setString(2, usuario.getEmail());
+				st.setString(3, usuario.getSenha());
 				
 				int rowsAffected = st.executeUpdate();
-				
 				if(rowsAffected != 0) {
 					ResultSet rs = st.getGeneratedKeys();
 					
@@ -38,7 +37,6 @@ public class UsuarioDAO implements GenericDAO {
 					rs.close();
 				}
 				st.close();
-
 			}
 			else {
 				throw new RuntimeException("OBJETO INVÁLIDO!");

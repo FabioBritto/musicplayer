@@ -6,6 +6,13 @@
 	color: red;
 }
 
+.botao {
+	background: #449D44;
+	border-color: #449D44;
+	color: #FFFFFF;
+	margin: 10px;
+}
+
 body {
 	background: #000000;
 	color: #FFFFFF;

@@ -16,6 +16,7 @@ import br.com.fabiobritto.musicplayer.model.Usuario;
 
 @WebServlet("/efetivacadastro")
 public class EfetivaCadastroServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 
     public EfetivaCadastroServlet() {
@@ -25,34 +26,38 @@ public class EfetivaCadastroServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String pagina = "/error.jsp";
-		System.out.println("teste");
 		
 		String nome = request.getParameter("txtNome");
 		String email = request.getParameter("txtEmail");
 		String senha = request.getParameter("txtSenha");
 		
-		Usuario usuario = new Usuario(null, nome, email, senha);
+		Usuario usuario = new Usuario();
+		usuario.setNomeUsuario(nome);
+		usuario.setEmail(email);
+		usuario.setSenha(senha);
 		
-		DataSource ds;
+		DataSource dataSource;
 		UsuarioDAO usuarioDAO;
 		
 		try {
-			ds = new DataSource();
-			usuarioDAO = new UsuarioDAO(ds);
+			dataSource = new DataSource();
+			usuarioDAO = new UsuarioDAO(dataSource);
 			usuarioDAO.create(usuario);
 			
-			ds.getConnection().close();
-			System.out.println("teste");
-			pagina = "/index.html";
+			dataSource.getConnection().close();
+			pagina = "/myaccount.jsp";
 		}
 		catch(SQLException e) {
 			System.out.println("Erro ao fechar conexão: " + e.getMessage());
-			request.setAttribute("erroMSG", "Error ao criar conta de usuário!");
+			request.setAttribute("erroMSG", "Error ao criar nova conta de usuário!");
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
+		if(usuario.getId() != 0) {
+			request.getSession().setAttribute("Usuario", usuario);
+		}
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
 		dispatcher.forward(request, response);
 	}
