@@ -3,6 +3,7 @@ package br.com.fabiobritto.musicplayer.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,35 @@ public class UsuarioDAO implements GenericDAO {
 	}
 
 	public void create(Object o) {
-		
+		try {
+			if(o instanceof Usuario) {
+				Usuario usuario = (Usuario)o;
+				String SQL = "INSERT INTO tbUsuario VALUES (null, ?, ?, ?)";
+				PreparedStatement st = dataSource.getConnection().prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+				st.setString(2, usuario.getNomeUsuario());
+				st.setString(3, usuario.getEmail());
+				st.setString(4, usuario.getSenha());
+				
+				int rowsAffected = st.executeUpdate();
+				
+				if(rowsAffected != 0) {
+					ResultSet rs = st.getGeneratedKeys();
+					
+					if(rs.next()) {
+						usuario.setId(rs.getInt(1));
+					}
+					rs.close();
+				}
+				st.close();
+
+			}
+			else {
+				throw new RuntimeException("OBJETO INVÁLIDO!");
+			}
+		}
+		catch(SQLException e) {
+			System.out.println("ERRO AO CRIAR USUARIO: " + e.getMessage());
+		}
 	}
 	
 	/*

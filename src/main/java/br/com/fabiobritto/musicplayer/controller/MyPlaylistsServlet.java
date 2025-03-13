@@ -15,13 +15,13 @@ import br.com.fabiobritto.musicplayer.model.Usuario;
  * Servlet implementation class MyPlaylistsServer
  */
 @WebServlet("/myplaylists")
-public class MyPlaylistsServer extends HttpServlet {
+public class MyPlaylistsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPlaylistsServer() {
+    public MyPlaylistsServlet() {
         super();
     }
 

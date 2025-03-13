@@ -36,13 +36,26 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
+				<h4 class="text-center">
+					Fa�a Parte!!!
+				</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
 				<div class="row">
 					<div class="col-md-2">
 					</div>
 					<div class="col-md-8">
-						<form role="form" action="loginservlet" method="POST">
+						<form role="form" action="efetivacadastro" method="POST">
 							<div class="form-group">
 								 
+								<label for="exampleNome">
+									Seu Nome Completo
+								</label>
+								<input type="text" class="form-control" id="exampleNome" name="txtNome"/>
+							</div>
+							<div class="form-group">
 								<label for="exampleInputEmail1">
 									Seu Email
 								</label>
@@ -56,15 +69,9 @@
 								<input type="password" class="form-control" id="exampleInputPassword1" name="txtSenha"/>
 							</div>
 							<button type="submit" class="btn btn-primary">
-								Entrar
-							</button>			
+								Criar Conta
+							</button>
 						</form>
-						Não tem conta? <a href="novousuario">Novo Usuário</a>
-						<!-- <form action="novousuario">
-							Não tem conta? <a href="novousuario">Novo Usuário</a>
-						</form>
-						 -->
-						
 					</div>
 					<div class="col-md-2">
 					</div>
