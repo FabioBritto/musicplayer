@@ -65,10 +65,6 @@ public class Usuario implements Serializable {
 		this.playlists = playlist;
 	}
 	
-	public void addPlaylists(Playlist playlist) {
-		playlists.add(playlist);
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

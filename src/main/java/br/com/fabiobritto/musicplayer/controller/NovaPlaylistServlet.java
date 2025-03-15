@@ -11,33 +11,27 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.fabiobritto.musicplayer.model.Usuario;
 
-/**
- * Servlet implementation class MyPlaylistsServer
- */
-@WebServlet("/myplaylists")
-public class MyPlaylistsServlet extends HttpServlet {
+
+@WebServlet("/novaplaylist")
+public class NovaPlaylistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MyPlaylistsServlet() {
+    public NovaPlaylistServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String paginaRetorno;
-		
-		Usuario usuario = (Usuario) (request.getSession().getAttribute("Usuario"));
-		
-		if(usuario == null) {
-			paginaRetorno = "/index.html";
+		Usuario usuario = (Usuario) request.getSession().getAttribute("Usuario");
+		String pagina = "/index.html";
+		if(usuario != null) {
+			pagina = "/novaplaylist.jsp";
 		}
 		else {
-			paginaRetorno = "/myplaylists.jsp";
+			
 		}
-		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaRetorno);
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher(pagina);
 		dispatcher.forward(request, response);
 	}
+
 }

@@ -50,7 +50,7 @@
 						<a class="nav-link" href="#">Nova Playlist              </a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="./myplaylists">Minhas Playlists              </a>
+						<a class="nav-link" href="playlists">Minhas Playlists              </a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">Upload de Músicas              </a>

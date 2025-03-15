@@ -1,7 +1,6 @@
 package br.com.fabiobritto.musicplayer.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,6 +12,8 @@ public class Playlist implements Serializable {
 	private String titulo;
 	
 	private List<Musica> musicas;
+	
+	private Usuario usuario;
 	
 	public Playlist() {
 	}
@@ -45,6 +46,14 @@ public class Playlist implements Serializable {
 	public void setMusicas(List<Musica> musicas) {
 		this.musicas = musicas;
 	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	@Override
 	public int hashCode() {
@@ -65,6 +74,6 @@ public class Playlist implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Playlist [id=" + id + ", titulo=" + titulo + "]";
+		return "Playlist [id=" + id + ", titulo=" + titulo + ", musicas=" + musicas + ", usuario=" + usuario + "]";
 	}
 }
