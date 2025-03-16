@@ -50,13 +50,12 @@
 
 							<div class="form-group">
 								<label for="artista"> Artista </label> <input type="text"
-									class="form-control" id="artista" name="trtArtsita" />
+									class="form-control" id="artista" name="txtArtista" />
 							</div>
 
 							<div class="form-group">
 								<label for="nomeMusica"> Nome da Música </label> <input
-									type="text" class="form-control" id="nomemusica"
-									name="txtNomeMusica" />
+									type="text" class="form-control" id="nomemusica" name="txtNomeMusica" />
 							</div>
 
 							<div class="form-group">
@@ -65,8 +64,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="estilo"> Estilo </label> <select id="estilo"
-									name="txtEstilo">
+								<label for="estilo"> Estilo </label> <select id="estilo" name="txtEstilo">
 									<option value="1">POP</option>
 									<option value="2">GOSPEL</option>
 									<option value="3">ROCK</option>
