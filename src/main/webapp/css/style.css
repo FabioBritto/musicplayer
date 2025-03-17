@@ -6,6 +6,11 @@
 	color: red;
 }
 
+body {
+	background: #000000;
+	color: #FFFFFF;
+}
+
 .botao {
 	background: #449D44;
 	border-color: #449D44;
@@ -13,10 +18,7 @@
 	margin: 10px;
 }
 
-body {
-	background: #000000;
-	color: #FFFFFF;
-}
+
 
 h3 {
 	color: #638C6D;
@@ -25,5 +27,15 @@ h3 {
 
 .btn {
 	background: #638C6D;
+}
+
+.artista {
+	color: #FFFFFF;
+	font-size: small;
+}
+
+.tituloMusica {
+	color: #FFFFFF;
+	font-size: medium;
 }
 
