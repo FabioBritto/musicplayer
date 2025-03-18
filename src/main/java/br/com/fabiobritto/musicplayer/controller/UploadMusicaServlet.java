@@ -36,6 +36,7 @@ public class UploadMusicaServlet extends HttpServlet {
 				String album = request.getParameter("txtAlbum");
 				Estilo estilo = Estilo.valueOf(Integer.parseInt(request.getParameter("txtEstilo")));
 				
+				
 				InputStream arquivoOriginal = request.getPart("fileMP3").getInputStream();
 				String nomeArquivoOriginal = request.getPart("fileMP3").getSubmittedFileName();
 				String nomeArquivo = getServletContext().getRealPath("/") + "/musicas/" + request.getPart("fileMP3").getSubmittedFileName();

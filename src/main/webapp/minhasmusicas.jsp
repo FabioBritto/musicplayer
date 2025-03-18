@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <jsp:useBean id="Usuario" type="br.com.fabiobritto.musicplayer.model.Usuario" scope="session"/>
-<jsp:useBean id="Playlist" type="br.com.fabiobritto.musicplayer.model.Playlist" scope="session"/>
+<jsp:useBean id="ListaMusicas" type="java.util.List" scope="request"/>
+<jsp:useBean id="idPlaylist" type="java.lang.String" scope="request"/>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <html lang="en">
   <head>
@@ -15,6 +16,19 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    
+    <script type="text/javascript">
+    function adicionar(idPlaylist, idMusica){
+    	var xmlhttp = new XMLHttpRequest();
+    	xmlhttp.open("GET", "http://localhost:8080/musicplayer/incluirnaplaylist?idPlaylist=" + idPlaylist + "&idMusica=" + idMusica);
+    	xmlhttp.onreadystagechange = function(){
+			if(xmlhttp.status == 200 && xmlhttp.readyState === 4){
+				alert(xmlhttp.responseText);
+			}
+    	};
+    	xmlhttp.send();
+    }
+    </script>
 
   </head>
   <body>
@@ -37,7 +51,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<h4 class="text-center">Detalhes da Playlist</h4>
+				<h4 class="text-center">Acervo de Músicas</h4>
 			</div>
 		</div>
 
@@ -62,41 +76,23 @@
 				&nbsp;
 			</div>
 		</div>
-		
-		<div class="row">
-			<div class="col-md-2">&nbsp;</div>
-			<div class="col-md-8">
-				<h4>${Playlist.titulo} <img id="imgplay" src="images/botao-play.png" alt="Tocar Playlist" title="Tocar Playlist"></h4>
-			</div>
-			<div class="col-md-2">&nbsp;</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-md-2">&nbsp;</div>
-			<div class="col-md-8">
-				<h5> <a href="recuperamusicas?idplaylist=${Playlist.id}">Adicionar Músicas</a> </h5>
-			</div>
-			<div class="col-md-2">&nbsp;</div>
-		</div>
-		
-		<c:forEach var="Musica" items="${Playlist.musicas}">
+			
+		<c:forEach var="musica" items="${ListaMusicas}">
+			<!-- Várias Iterações -->
 			<div class="row">
-				<div class="col-md-2">&nbsp;</div>
-				<div class="col-md-8">
-				
-					<span class="tituloMusica">
-						${Musica.titulo}
-					</span>
-					<span class="artista">
-						${Musica.artista} (Album: ${Musica.album})
-					</span>
+				<div class="col-md-2" > &nbsp; </div>
+				<div class="col-md-1">
+					<button class="btn" onclick="adicionar(${idPlaylist}, ${musica.id});">+</button>
 					
 				</div>
-				<div class="col-md-2">&nbsp;</div>
-				
+				<div class="col-md-7">
+					${musica.titulo} - ${musica.artista}<br/>
+					<span class="artista"> Álbum: ${musica.album} <br/></span>
+					<span class="artista"> Estilo: ${musica.estilo}</span>
+				</div>
+				<div class="col-md-2"> &nbsp; </div>
 			</div>
 		</c:forEach>
-
 	</div>
 
 

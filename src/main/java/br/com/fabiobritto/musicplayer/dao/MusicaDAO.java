@@ -4,9 +4,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fabiobritto.musicplayer.model.Musica;
+import br.com.fabiobritto.musicplayer.model.enums.Estilo;
 
 public class MusicaDAO implements GenericDAO {
 
@@ -51,8 +53,28 @@ public class MusicaDAO implements GenericDAO {
 
 	@Override
 	public List<Object> read(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			String SQL = "SELECT * FROM tbmusica ORDER BY titulo";
+			PreparedStatement st = dataSource.getConnection().prepareStatement(SQL);
+			ResultSet rs = st.executeQuery();
+			List<Object> lista = new ArrayList<>();
+			
+			while(rs.next()) {
+				Musica musica = new Musica();
+				musica.setId(rs.getInt("idMusica"));
+				musica.setTitulo(rs.getString("titulo"));
+				musica.setArtista(rs.getString("artista"));
+				musica.setAlbum(rs.getString("album"));
+				musica.setEstilo(Estilo.valueOf(rs.getInt("estilo")));
+				musica.setLinkMP3(rs.getString("linkMP3"));
+				lista.add(musica);
+			}
+			return lista;
+		}
+		catch(SQLException e) {
+			System.out.println("ERRO AO RECUPERAR ACERVO DE MÚSICAS: " + e.getMessage());
+			return null;
+		}
 	}
 
 	@Override
