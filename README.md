@@ -1,7 +1,7 @@
 # 🎵 MusicPlayer - Web App com Servlets e JSP  
 
 ## 📌 Descrição  
-O **MusicPlayer** é um sistema web desenvolvido com **Java EE (Servlets, JSP e JDBC puro)** para gerenciar usuários, playlists e músicas. O projeto foi desenvolvido de acordo com as aulas do Professor Isidro. O material está na íntegra no seu canal no Youtube (https://www.youtube.com/playlist?list=PLjcmNukBom6_5C4NrQ3Enpg37wP7fKqvJ). A aplicação permite:  
+O **MusicPlayer** é um sistema web desenvolvido com **Java EE (Servlets, JSP e JDBC puro)** para gerenciar usuários, playlists e músicas. O projeto foi desenvolvido de acordo com as aulas do Professor Isidro. O material está na íntegra no seu [canal no Youtube](https://www.youtube.com/playlist?list=PLjcmNukBom6_5C4NrQ3Enpg37wP7fKqvJ). A aplicação permite:  
 
 ✔ Cadastro de usuários  
 ✔ Criação e gerenciamento de playlists  
